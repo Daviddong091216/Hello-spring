@@ -17,14 +17,31 @@ public class HelloSpringController {
         return "Goodbye, yesterday!";
     }
 
-    @GetMapping("hello")
+    @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String helloWithQueryParameter(@RequestParam String name) {
         return "Hello, " + name + " !";
     }
+
     @GetMapping("hello/{name}")
     @ResponseBody
     public String helloWithPathParameter(@PathVariable String name) {
         return "Hello, " + name + " !";
     }
+
+    @GetMapping("form")
+    @ResponseBody
+    public String helloForm() {
+        String html =
+                "<html>" +
+                    "<body>" +
+                        "<form method = 'post' action = '/hello'>" +
+                            "<input type = 'text' name = 'name' />" +
+                            "<input type = 'submit' value = 'Greet Me!' />" +
+                        "</form>" +
+                    "</body>" +
+                "</html>";
+        return html;
+    }
+
 }
