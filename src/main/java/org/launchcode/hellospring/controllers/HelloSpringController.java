@@ -4,43 +4,45 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@ResponseBody
+@RequestMapping(value = "hello")
 public class HelloSpringController {
-    @GetMapping("helloMiley")
-    @ResponseBody
+    //hello/Miley
+    @GetMapping("Miley")
     public String helloMiley() {
         return "Hello, Miley!";
     }
 
+    //hello/goodbye
     @GetMapping("goodbye")
-    @ResponseBody
     public String goodbye() {
         return "Goodbye, yesterday!";
     }
 
-    @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
+    //hello?name=name
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String helloWithQueryParameter(@RequestParam String name) {
         return "Hello, " + name + " !";
     }
 
-    @GetMapping("hello/{name}")
-    @ResponseBody
+    //hello/name
+    @GetMapping("{name}")
     public String helloWithPathParameter(@PathVariable String name) {
         return "Hello, " + name + " !";
     }
 
+    //hello/form
     @GetMapping("form")
-    @ResponseBody
     public String helloForm() {
         String html =
                 "<html>" +
-                    "<body>" +
+                        "<body>" +
                         "<form method = 'post' action = '/hello'>" +
-                            "<input type = 'text' name = 'name' />" +
-                            "<input type = 'submit' value = 'Greet Me!' />" +
+                        "<input type = 'text' name = 'name' />" +
+                        "<input type = 'submit' value = 'Greet Me!' />" +
                         "</form>" +
-                    "</body>" +
-                "</html>";
+                        "</body>" +
+                        "</html>";
         return html;
     }
 
