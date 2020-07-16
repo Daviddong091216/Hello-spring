@@ -5,7 +5,11 @@
     <title>David Dong</title>
 </head>
 <body>
-    <form method = 'post' action = '/hello1'>
+<!--    method="get" or "post" relates to the @GetMapping or @PostMapping in controller-->
+<!--    we get the different display in the route window!-->
+<!--"get" display: /hello1?name=Miley-->
+<!--"post" display: /hello1-->
+<form method = 'post' action = '/hello1'>
         <input type = 'text' name = 'name' />
         <input type = 'submit' value = 'Greet Me!' />
     </form>

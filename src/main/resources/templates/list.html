@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>David Dong</title>
+</head>
+<body>
+
+<th:block th:each = "shop : ${shops}">  <!-- Iterate through shops -->
+    <p th:text = "${shop.name}">Shop name</p>
+    <ul>
+        <!-- Iterate through coffeeOptions -->
+        <th:block th:each = "flavor : ${shop.coffeeOptions}">
+            <li th:text="${flavor}"></li>
+        </th:block>
+    </ul>
+</th:block>
+
+<!--<th:block th:each = "flavor : ${coffeeOptions}">-->
+<!--    <p th:text = "${flavor}"></p>-->
+<!--</th:block>-->
+</body>
+</html>
